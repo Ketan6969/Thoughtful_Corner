@@ -1,0 +1,109 @@
+/*
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap')
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #adb19c, #c7c4d8);
+}
+.container {
+    max-width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    
+    
+    
+}
+
+.form-container {
+    height: 450px;  
+    width: 350px;
+    background-color: rgb(196,197,192);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 8px 8px 0px;
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+   
+    font-style: normal;
+}
+
+
+.img-container {
+    height: 450px;
+    width: 350px;
+    background-image: url("img\\newbg2.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px 0px 0px 8px;
+    text-align: center;
+}
+
+.text{
+    margin: 3px;
+    height: 25px;
+    border-radius: 8px;
+    border: none;
+}
+.text:hover{
+    opacity: 0.8;
+}
+h2{
+    justify-self: flex-start;
+    justify-content: baseline;
+}
+h1{
+
+        font-family: "Ephesis", cursive;
+        font-weight: 800;
+        font-style: normal;
+
+      
+}
+.intro-text{
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+   
+    font-style: normal;
+}
+
+.intro-container{
+    padding: 10px;
+    margin: 5px;
+   color: black;
+    border-radius: 8px;
+    background-color: rgba(213, 205, 190, 0.386);
+
+}
+
+.submit{
+    width: auto;
+    
+    margin: 4xpx;
+    padding: 5px;
+    border-radius: 8px;
+    border-color: transparent;
+    border-width: 2px;
+    background-color: whitesmoke;
+}
+.submit:hover{
+   background-color: wheat;
+   color: black;
+   border-radius: 8px;
+   
+   transition: transform 0.5s ease-in-out;
+   
+}
