@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +41,7 @@ error_reporting(E_ERROR | E_PARSE);
 ini_set('display_errors', 'Off');
     include("conn.php");
     include("functions.php");
-    session_start();
+    
     if(isset($_POST["submit"]))
     {
         $email = $_POST['email'];

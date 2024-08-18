@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +33,7 @@ include("conn.php");
 error_reporting(E_ERROR | E_PARSE);
 ini_set('display_errors', 'Off');
 
-session_start();
+
 
 if (isset($_POST["login"])) {
     $email = $_POST['email'];

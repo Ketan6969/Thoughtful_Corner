@@ -1,8 +1,7 @@
 <?php
+        session_start();
         include("conn.php");
         include("cardlogic.php");
-
-        session_start();
     ?>
 
 

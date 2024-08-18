@@ -1,3 +1,8 @@
+<?php
+    include("conn.php");
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,8 +31,7 @@
 </html>
 
 <?php
-include("conn.php");
-session_start();
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];

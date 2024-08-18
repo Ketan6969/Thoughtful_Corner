@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include("functions.php");
 ?>  
 <!DOCTYPE html>
@@ -93,7 +94,7 @@
 
 <?php
     include("conn.php");
-    session_start();
+    
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
             $quote = $_POST["quote"];

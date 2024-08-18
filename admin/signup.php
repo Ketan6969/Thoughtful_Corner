@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +44,7 @@
 
 include("conn.php");
 include("functions.php");
-session_start();
+
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
