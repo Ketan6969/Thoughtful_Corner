@@ -1,32 +1,6 @@
 <?php
     session_start();
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="fonts.css">
-    <title>Log In</title>
-</head>
-<body>  
-    <div class="container">
-        <div class="img-container">
-            <h1>Thoughtful Corner</h1>
-        </div>
-        <form action="login.php" method="post" class="form-container">
-            <h2>Log in</h2>
-            <input class="text" type="text" name="email" id="username" placeholder="Email">
-            <input class="text" type="password" name="pass" id="pass" placeholder="Password">
-            <input class="submit" type="submit" value="Log in" name="login">
-            <p>Not a user? <a href="signup.php">Sign up</a></p>
-        </form>
-    </div>
-</body>
-</html>
-
 <?php
 include("conn.php");
 // Turn off display of warnings
@@ -67,6 +41,32 @@ if (isset($_POST["login"])) {
 }
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="fonts.css">
+    <title>Log In</title>
+</head>
+<body>  
+    <div class="container">
+        <div class="img-container">
+            <h1>Thoughtful Corner</h1>
+        </div>
+        <form action="login.php" method="post" class="form-container">
+            <h2>Log in</h2>
+            <input class="text" type="text" name="email" id="username" placeholder="Email">
+            <input class="text" type="password" name="pass" id="pass" placeholder="Password">
+            <input class="submit" type="submit" value="Log in" name="login">
+            <p>Not a user? <a href="signup.php">Sign up</a></p>
+        </form>
+    </div>
+</body>
+</html>
+
+
 
 
 
