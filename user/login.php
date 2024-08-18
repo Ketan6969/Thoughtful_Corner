@@ -32,6 +32,7 @@ if (isset($_POST["login"])) {
             $_SESSION['user_id'] = $user_id;
             $_SESSION['user_name'] = $user_name;
             header("location: index.php");
+exit();
         } else {
             echo '<script>alert("Incorrect Email or Password!")</script>';
         }

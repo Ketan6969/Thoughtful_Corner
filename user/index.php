@@ -25,6 +25,7 @@
         session_destroy();
         echo "session Destroyed"; // This line may cause issues. Remove it or use it outside of the header function.
         header("location: login.php");
+exit();
         exit();
     }
 ?>
@@ -32,11 +33,13 @@
     //Log in redirection code
     if(isset($_POST['login'])){
         header("location: login.php");
+exit();
         exit();
     }
     //Sign up redirection code
     if(isset($_POST['signup'])){
         header("location: signup.php");
+exit();
         exit();
         
     }
