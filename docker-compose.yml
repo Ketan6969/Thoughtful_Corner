@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  web:
+    container_name: 'frontend'
+    image: webapp
+    ports:
+      - 4000:80
+    
+
+  db:
+    container_name: mysql_container
+    image: mysql 
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Ketan@123' 
+    ports:
+      - '5000:3306'
+
+  php_my_admin:
+    container_name: php_my_admin
+    image: phpmyadmin
+    restart: always
+    ports:
+      - '5001:80'
+    environment:
+      
+      - PMA_PORT= '5000'
+      - MYSQL_ROOT_PASSWORD= 'Ketan@123'
+    
+
