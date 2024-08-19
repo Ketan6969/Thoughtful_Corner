@@ -50,6 +50,7 @@ pipeline{
                     withCredentials([sshUserPrivateKey(credentialsId: "aws-creds", keyFileVariable: 'SSH_KEY')]) {
                         sh '''
                             pwd
+                            ls
                             ssh -i $SSH_KEY -o strictHostKeyChecking=no ${SERVER_USER}@${SERVER_IP} "
                                 docker pull ${DOCKER_IMAGE}:latest
                                 docker-compose down || true 
