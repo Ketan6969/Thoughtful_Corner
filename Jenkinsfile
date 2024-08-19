@@ -51,6 +51,7 @@ pipeline{
                     withCredentials([sshUserPrivateKey(credentialsId: "aws-creds", keyFileVariable: 'SSH_KEY')]) {
                         sh '''
                             ssh -i $SSH_KEY -o strictHostKeyChecking=no ${SERVER_USER}@${SERVER_IP} "
+                                cd /var/lib/jenkins/workspace/thcorner-pipeline
                                 docker pull ${DOCKER_IMAGE}:latest
                                 docker-compose down || true 
                                 docker rm thcorner-container || true
