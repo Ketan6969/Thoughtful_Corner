@@ -19,7 +19,7 @@ pipeline{
             steps{
                 script{
                     
-                    pwd
+                    ehco pwd
                     echo "Building the Docker Image...."
                     docker.build("$DOCKER_IMAGE:latest")
                     echo "Image Built!!"
@@ -53,7 +53,8 @@ pipeline{
                                 docker pull ${DOCKER_IMAGE}:latest
                                 docker-compose down || true 
                                 docker rm thcorner-container || true
-                                docker-compose up -d
+                                // docker-compose up -d
+                                echo complete
                             "
                         '''
                     }
