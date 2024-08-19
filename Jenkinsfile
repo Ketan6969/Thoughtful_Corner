@@ -1,32 +1,33 @@
-pipeline {
+pipeline{
     agent any
-    environment {
+    environment{
         DOCKER_CREDENTIAL_ID="docker-hub-creds"
         DOCKER_REGISTRY='docker.io'
         DOCKER_IMAGE="ketan2004/thcorner"
         SERVER_IP="34.234.138.153"
         SERVER_USER="ubuntu"
     }
-    stages {
-        stage('Checkout') {
-            steps {
+    stages{
+        stage('Checkout'){
+            steps{
                 echo "Fetching code from Github..."
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/Ketan6969/Thoughtful_Corner.git']]])
             }
         }
 
-        stage('DockerBuild') {
-            steps {
-                script {
+        stage('Dockerbuild'){
+            steps{
+                script{
                     echo "Building the Docker Image...."
                     docker.build("$DOCKER_IMAGE:latest")
                     echo "Image Built!!"
                 }
             }
         }
-        stage('DockerPush') {
-            steps {
-                script {
+        
+        stage('Dockerpush'){
+            steps{
+                script{
                     echo "Executing the docker push stage!!!"
                     withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIAL_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh '''
@@ -39,9 +40,9 @@ pipeline {
             }
         }
 
-        stage("Deploy") {
-            steps {
-                script {
+        stage('Deploy'){
+            steps{
+                script{
                     echo "Deploying the application....."
                     withCredentials([sshUserPrivateKey(credentialsId: "aws-creds", keyFileVariable: 'SSH_KEY')]) {
                         sh '''

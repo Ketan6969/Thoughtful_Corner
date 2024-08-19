@@ -2,8 +2,8 @@
 
   services:
     web:
-      container_name: 'frontend'
-      image: webapp
+      container_name: 'thcorner-container'
+      image: ketan2004/thcorner
       depends_on:
         - db
       ports:
