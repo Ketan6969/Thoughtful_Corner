@@ -18,6 +18,9 @@ pipeline{
         stage('Dockerbuild'){
             steps{
                 script{
+                    '''
+                        pwd
+                    '''
                     echo "Building the Docker Image...."
                     docker.build("$DOCKER_IMAGE:latest")
                     echo "Image Built!!"
@@ -50,6 +53,7 @@ pipeline{
                                 docker pull ${DOCKER_IMAGE}:latest
                                 docker-compose down || true 
                                 docker rm thcorner-container || true
+                                pwd
                                 docker-compose up -d
                             "
                         '''
