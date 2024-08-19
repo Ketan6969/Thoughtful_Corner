@@ -1,3 +1,7 @@
+<?php ob_start(); ?>
+<?php
+  session_start();
+?>
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -75,7 +79,7 @@
       <div class="user-info">
           <?php
               include("conn.php");
-              session_start();
+              
               $sql = "SELECT * FROM user_mst";
               $result = mysqli_query($conn, $sql);
               if ($result->num_rows > 0) {
@@ -142,3 +146,4 @@ icons.forEach(icon => {
       
     </body>
   </html>
+<?php ob_end_flush(); ?>

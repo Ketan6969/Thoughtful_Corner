@@ -1,8 +1,8 @@
+<?php ob_start(); ?>
 <?php
         include("conn.php");
-        include("cardlogic.php");
-
         session_start();
+        include("cardlogic.php")
     ?>
 
 
@@ -221,3 +221,4 @@
     </html>
 
  
+<?php ob_end_flush(); ?>

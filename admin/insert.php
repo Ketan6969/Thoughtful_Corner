@@ -1,6 +1,43 @@
+<?php ob_start(); ?>
 <?php
+  session_start();
   include("functions.php");
 ?>  
+<?php
+    include("conn.php");
+    
+    if($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+            $quote = $_POST["quote"];
+            $author = $_POST["author"];
+            $cate  = $_POST["category"];
+            
+            $sql = "insert into quotes_mst (quote,author,cate) values ('$quote' , '$author' , '$cate')";
+            if($quote == NULL || $author == NULL || $cate == NULL)
+            {
+                echo '<script>alert("Please fill all the details!")</script>';
+            }   
+            else
+            {
+                $result = mysqli_query($conn,$sql);
+                if($result){
+                echo '<script>alert("Data Inserted!")</script>';
+                $_SESSION['success_msg'] = "Data inserted!";
+                header("location:" . $_SERVER['REQUEST_URI']); 
+                exit();
+            }
+            else{
+                die('<script>alert("Error occured while insertion!")</script>');
+            }
+            }
+            mysqli_close($conn);     
+    }
+    if (isset($_SESSION['success_msg'])) {
+      echo '<script>alert("' . $_SESSION["success_msg"] . '")</script>';
+    
+      unset($_SESSION['success_msg']);
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -91,38 +128,5 @@
   </body>
 </html>
 
-<?php
-    include("conn.php");
-    session_start();
-    if($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-            $quote = $_POST["quote"];
-            $author = $_POST["author"];
-            $cate  = $_POST["category"];
-            
-            $sql = "insert into quotes_mst (quote,author,cate) values ('$quote' , '$author' , '$cate')";
-            if($quote == NULL || $author == NULL || $cate == NULL)
-            {
-                echo '<script>alert("Please fill all the details!")</script>';
-            }   
-            else
-            {
-                $result = mysqli_query($conn,$sql);
-                if($result){
-                echo '<script>alert("Data Inserted!")</script>';
-                $_SESSION['success_msg'] = "Data inserted!";
-                header("location:" . $_SERVER['REQUEST_URI']); 
-                exit();
-            }
-            else{
-                die('<script>alert("Error occured while insertion!")</script>');
-            }
-            }
-            mysqli_close($conn);     
-    }
-    if (isset($_SESSION['success_msg'])) {
-      echo '<script>alert("' . $_SESSION["success_msg"] . '")</script>';
-    
-      unset($_SESSION['success_msg']);
-  }
-?>
+
+<?php ob_end_flush(); ?>

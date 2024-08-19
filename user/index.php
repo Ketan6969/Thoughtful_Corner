@@ -1,6 +1,8 @@
+<?php ob_start(); ?>
     <?php
-        include("conn.php");
+        
         session_start();
+        include("conn.php");
     ?>
 
 
@@ -20,7 +22,7 @@
     }
     //rand_quote();
     ?>
-       <?php
+    <?php
     if(isset($_POST['logout'])){
         session_destroy();
         echo "session Destroyed"; // This line may cause issues. Remove it or use it outside of the header function.
@@ -253,4 +255,4 @@
     </body>
     </html>
 
- 
+<?php ob_end_flush(); ?>

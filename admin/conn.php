@@ -1,11 +1,12 @@
+<?php ob_start(); ?>
 <?php
-    $hostname = "localhost";
-    $servername = "thcorner";
-    $username = "root";
-    $password = "";
-    $conn = "";
+    $hostname = "db";          // The hostname of the MySQL service in Docker Compose
+    $username = "root";        // MySQL root username
+    $password = "Ketan123";   // MySQL root password
+    $dbname = "thcorner";      // The name of your database
+    
     //establishing connection
-    $conn = mysqli_connect($hostname,$username,$password,$servername);
+    $conn = mysqli_connect($hostname,$username,$password,$dbname);
 
     //checking connection
     if(!$conn)
@@ -15,3 +16,4 @@
     
    
 ?>
+<?php ob_end_flush(); ?>

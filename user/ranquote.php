@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
 // function for random quote generator
     function ran_quote(){
@@ -17,3 +18,4 @@
         
     }    
     ?>
+<?php ob_end_flush(); ?>

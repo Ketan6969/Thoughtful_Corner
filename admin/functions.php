@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
     include("conn.php");
     global $conn;
@@ -122,3 +123,4 @@
     
         
 ?>
+<?php ob_end_flush(); ?>

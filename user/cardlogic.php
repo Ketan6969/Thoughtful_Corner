@@ -1,8 +1,9 @@
+<?php ob_start(); ?>
 
 
     <?php
     //Function for quote by category
-   function fetch_quotes($category) {
+    function fetch_quotes($category) {
     include("conn.php");
 
     // Query to retrieve all quotes from the specified category
@@ -32,3 +33,5 @@
 ?>
 
 
+
+<?php ob_end_flush(); ?>

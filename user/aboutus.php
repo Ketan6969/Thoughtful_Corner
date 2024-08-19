@@ -1,8 +1,8 @@
+<?php ob_start(); ?>
 <?php
+        session_start();
         include("conn.php");
         include("cardlogic.php");
-
-        session_start();
     ?>
 
 
@@ -27,6 +27,7 @@
         session_destroy();
         echo "session Destroyed"; // This line may cause issues. Remove it or use it outside of the header function.
         header("location: login.php");
+exit();
         exit();
     }
 ?>
@@ -34,11 +35,13 @@
     //Log in redirection code
     if(isset($_POST['login'])){
         header("location: login.php");
+exit();
         exit();
     }
     //Sign up redirection code
     if(isset($_POST['signup'])){
         header("location: signup.php");
+exit();
         exit();
         
     }
@@ -169,3 +172,4 @@
     </html>
 
  
+<?php ob_end_flush(); ?>
