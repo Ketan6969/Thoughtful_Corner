@@ -1,11 +1,11 @@
 pipeline{
     agent any
     environment{
-        DOCKER_CREDENTIAL_ID='docker-hub-creds'
+        DOCKER_CREDENTIAL_ID="docker-hub-creds"
         DOCKER_REGISTRY='docker.io'
-        DOCKER_IMAGE='ketan2004/thcorner'
-        SERVER_IP='34.234.138.153'
-        SERVER_USER='ubuntu'
+        DOCKER_IMAGE="ketan2004/thcorner"
+        SERVER_IP="34.234.138.153"
+        SERVER_USER="ubuntu"
 
     }
     stages{
@@ -20,7 +20,7 @@ pipeline{
             steps{
                 script{
                     echo "Building the Docker Image...."
-                    docker.build('$DOCKER_IMAGE:latest')
+                    docker.build("$DOCKER_IMAGE:latest")
                     echo "Image Built!!"
                 }
             }
