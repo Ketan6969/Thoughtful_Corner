@@ -53,11 +53,11 @@ pipeline{
                             ssh -i $SSH_KEY -o strictHostKeyChecking=no ${SERVER_USER}@${SERVER_IP} "
                                 docker pull ${DOCKER_IMAGE}:latest
                                 pwd
-                                ls -la
+                                ls
                                 echo "current dir"
-                                docker-compose down || true 
+                                /var/lib/jenkins/workspace/thcorner-pipeline/docker-compose down || true 
                                 docker rm thcorner-container || true
-                                docker-compose up -d
+                                /var/lib/jenkins/workspace/thcorner-pipeline/docker-compose up -d
                             "
                         '''
                     }
