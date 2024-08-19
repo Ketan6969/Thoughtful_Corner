@@ -10,7 +10,5 @@ $conn= mysqli_connect($hostname, $username, $password, $dbname);
 // Checking connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
-} else {
-    echo "Connected successfully to the database '$dbname'.";
-}
+} 
 ?>
