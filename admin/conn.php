@@ -5,9 +5,8 @@
     $password = "Ketan123";   // MySQL root password
     $dbname = "thcorner";      // The name of your database
     
-    $conn = "";
     //establishing connection
-    $conn = mysqli_connect($hostname,$username,$password,$servername);
+    $conn = mysqli_connect($hostname,$username,$password,$dbname);
 
     //checking connection
     if(!$conn)
