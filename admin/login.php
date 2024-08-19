@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
     session_start();
 ?>
@@ -70,3 +71,5 @@ ini_set('display_errors', 'Off');
 </div>
 </body>
 </html>
+
+<?php ob_end_flush(); ?>

@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
         include("conn.php");
         include("cardlogic.php");
@@ -156,3 +157,5 @@
     </footer>
     </body>
     </html>
+
+<?php ob_end_flush(); ?>

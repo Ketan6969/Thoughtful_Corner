@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
   session_start();
 ?>
@@ -145,3 +146,4 @@ icons.forEach(icon => {
       
     </body>
   </html>
+<?php ob_end_flush(); ?>

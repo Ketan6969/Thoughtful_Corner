@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
   include("functions.php");
 ?>  
@@ -114,3 +115,5 @@
   </body>
 </html>
 
+
+<?php ob_end_flush(); ?>

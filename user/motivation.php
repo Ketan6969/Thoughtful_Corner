@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
         session_start();
         include("conn.php");
@@ -221,3 +222,4 @@
     </html>
 
  
+<?php ob_end_flush(); ?>

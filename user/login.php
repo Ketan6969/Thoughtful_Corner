@@ -1,5 +1,6 @@
+<?php ob_start(); ?>
 <?php
-    ob_start();
+
     session_start();
 ?>
 <?php
@@ -67,6 +68,5 @@ if (isset($_POST["login"])) {
     </div>
 </body>
 </html>
-<?php
-    ob_end_flush();
-?>
+
+<?php ob_end_flush(); ?>

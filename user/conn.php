@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
 $hostname = "db";          // The hostname of the MySQL service in Docker Compose
 $username = "root";        // MySQL root username
@@ -12,3 +13,5 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 } 
 ?>
+
+<?php ob_end_flush(); ?>

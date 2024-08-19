@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
 session_start();
 ?>
@@ -86,3 +87,5 @@ if (isset($_SESSION['success_msg'])) {
 </html>
 
 
+
+<?php ob_end_flush(); ?>

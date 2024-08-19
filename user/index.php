@@ -1,5 +1,6 @@
+<?php ob_start(); ?>
     <?php
-        ob_start();
+        
         session_start();
         include("conn.php");
     ?>
@@ -253,6 +254,5 @@
     </script>
     </body>
     </html>
-<?php
-    ob_end_flush();
-    ?>
+
+<?php ob_end_flush(); ?>

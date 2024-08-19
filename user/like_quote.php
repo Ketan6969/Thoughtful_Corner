@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
 session_start();
 include("conn.php");
@@ -46,3 +47,5 @@ if (isset($_SESSION['user_id']) && isset($_POST['quote_id'])) {
 
 mysqli_close($conn);
 ?>
+
+<?php ob_end_flush(); ?>

@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
     $hostname = "db";          // The hostname of the MySQL service in Docker Compose
     $username = "root";        // MySQL root username
@@ -16,3 +17,4 @@
     
    
 ?>
+<?php ob_end_flush(); ?>
