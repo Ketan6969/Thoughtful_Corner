@@ -18,9 +18,8 @@ pipeline{
         stage('Dockerbuild'){
             steps{
                 script{
-                    '''
-                        pwd
-                    '''
+                    
+                    pwd
                     echo "Building the Docker Image...."
                     docker.build("$DOCKER_IMAGE:latest")
                     echo "Image Built!!"
@@ -47,13 +46,13 @@ pipeline{
             steps{
                 script{
                     echo "Deploying the application....."
+                    pwd
                     withCredentials([sshUserPrivateKey(credentialsId: "aws-creds", keyFileVariable: 'SSH_KEY')]) {
                         sh '''
                             ssh -i $SSH_KEY -o strictHostKeyChecking=no ${SERVER_USER}@${SERVER_IP} "
                                 docker pull ${DOCKER_IMAGE}:latest
                                 docker-compose down || true 
                                 docker rm thcorner-container || true
-                                pwd
                                 docker-compose up -d
                             "
                         '''
