@@ -4,7 +4,7 @@ pipeline{
         DOCKER_CREDENTIAL_ID='docker-hub-creds'
         DOCKER_REGISTRY='docker.io'
         DOCKER_IMAGE='ketan2004/thcorner'
-        SERVER_IP=34.234.138.153
+        SERVER_IP='34.234.138.153'
         SERVER_USER='ubuntu'
 
     }
