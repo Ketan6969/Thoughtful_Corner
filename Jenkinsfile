@@ -52,9 +52,9 @@ pipeline{
                         sh '''
                             ssh -i $SSH_KEY -o strictHostKeyChecking=no ${SERVER_USER}@${SERVER_IP} "
                                 docker pull ${DOCKER_IMAGE}:latest
-                                $DOCKER_COMPOSE_PATH docker-compose down || true 
+                                $DOCKER_COMPOSE_PATH down || true 
                                 docker rm thcorner-container || true
-                                $DOCKER_COMPOSE_PATH docker-compose up -d
+                                $DOCKER_COMPOSE_PATH up -d
                             "
                         '''
                     }
