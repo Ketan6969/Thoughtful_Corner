@@ -1,6 +1,39 @@
 <?php
    session_start();
 ?>
+<?php
+  include("conn.php");
+ 
+  if(isset($_POST['update']))
+  {
+    global $conn;
+    $quote_id = $_POST['quote_id'];
+    $quote = $_POST['quote'];
+    $author = $_POST['author'];
+    $cate = $_POST['category'];
+    $sql = "update quotes_mst set quote_id = '$quote_id' , quote = '$quote' , author = '$author' , cate = '$cate' where quote_id = '$quote_id'";
+    $result = mysqli_query($conn,$sql);
+    if($result)
+    {
+        echo '<script>alert("Data Updated!")</script>';
+        $_SESSION['success_msg'] = "Data Updated!"; //Assigned Success Message
+        header("location:" . $_SERVER['REQUEST_URI']); //Redirected page to self 
+        exit();
+    }  
+    else{
+      die('<script>alert("Error occured while Updating!")</script>');
+    }
+    mysqli_close($conn);
+  }
+ 
+  //Printing Session Variable
+  if (isset($_SESSION['success_msg'])) {
+    echo '<script>alert("' . $_SESSION["success_msg"] . '")</script>';
+  
+    unset($_SESSION['success_msg']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -91,35 +124,3 @@
   </body>
 </html>
 
-<?php
-  include("conn.php");
- 
-  if(isset($_POST['update']))
-  {
-    global $conn;
-    $quote_id = $_POST['quote_id'];
-    $quote = $_POST['quote'];
-    $author = $_POST['author'];
-    $cate = $_POST['category'];
-    $sql = "update quotes_mst set quote_id = '$quote_id' , quote = '$quote' , author = '$author' , cate = '$cate' where quote_id = '$quote_id'";
-    $result = mysqli_query($conn,$sql);
-    if($result)
-    {
-        echo '<script>alert("Data Updated!")</script>';
-        $_SESSION['success_msg'] = "Data Updated!"; //Assigned Success Message
-        header("location:" . $_SERVER['REQUEST_URI']); //Redirected page to self 
-        exit();
-    }  
-    else{
-      die('<script>alert("Error occured while Updating!")</script>');
-    }
-    mysqli_close($conn);
-  }
- 
-  //Printing Session Variable
-  if (isset($_SESSION['success_msg'])) {
-    echo '<script>alert("' . $_SESSION["success_msg"] . '")</script>';
-  
-    unset($_SESSION['success_msg']);
-}
-?>

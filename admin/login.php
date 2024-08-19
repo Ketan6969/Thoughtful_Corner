@@ -2,6 +2,40 @@
     session_start();
 ?>
 
+<?php
+error_reporting(E_ERROR | E_PARSE);
+ini_set('display_errors', 'Off');
+    include("conn.php");
+    include("functions.php");
+    
+    if(isset($_POST["submit"]))
+    {
+        $email = $_POST['email'];
+        $pass = $_POST['pass'];
+        $sql = "SELECT * FROM admin_mst WHERE a_email = '$email' AND a_pass = '$pass'";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $count = mysqli_num_rows($result);
+        $adminname = $row['a_name'];
+
+        if(empty($email) || empty($pass))
+        {
+            echo '<script>alert("Please fill all the details!")</script>';
+        }
+        elseif($count > 0)
+        {
+            $_SESSION['adminname'] = $adminname;
+            header("location: index.php");
+        }
+        else{
+            echo '<script>alert("Incorrect Email or Password!")</script>';
+        }
+        
+    } 
+    
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,36 +70,3 @@
 </div>
 </body>
 </html>
-<?php
-error_reporting(E_ERROR | E_PARSE);
-ini_set('display_errors', 'Off');
-    include("conn.php");
-    include("functions.php");
-    
-    if(isset($_POST["submit"]))
-    {
-        $email = $_POST['email'];
-        $pass = $_POST['pass'];
-        $sql = "SELECT * FROM admin_mst WHERE a_email = '$email' AND a_pass = '$pass'";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        $count = mysqli_num_rows($result);
-        $adminname = $row['a_name'];
-
-        if(empty($email) || empty($pass))
-        {
-            echo '<script>alert("Please fill all the details!")</script>';
-        }
-        elseif($count > 0)
-        {
-            $_SESSION['adminname'] = $adminname;
-            header("location: index.php");
-        }
-        else{
-            echo '<script>alert("Incorrect Email or Password!")</script>';
-        }
-        
-    } 
-    
-
-?>

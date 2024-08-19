@@ -2,34 +2,6 @@
     session_start();
     include("conn.php");
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="fonts.css">
-    <title>Log In</title>
-</head>
-<body>
-    <div class="container">
-        <div class="img-container">
-            <h1>Thoughtful Corner</h1>
-        </div>
-        <form action="signup.php" method="post" class="form-container">
-            <h2>Sign Up</h2>
-            <input class="text" type="text" name="name" id="name" placeholder="Name" required>
-            <input class="text" type="email" name="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-            <input class="text" type="password" name="pass" id="pass" placeholder="Password" required>
-            <input class="text" type="password" name="repass" id="repass" placeholder="Confirm Password" required>
-            <input class="submit" type="submit" value="Sign Up" name="signup">
-            <p>Already a user? <a href="login.php">Log in</a></p>
-        </form>
-    </div>
-</body>
-</html>
-
 <?php
 
 
@@ -63,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_close($conn);
             $_SESSION['success_msg'] = "signup successful";
             header("location:" . $_SERVER['REQUEST_URI']);
-exit();
             exit(); 
         }
     }
@@ -74,3 +45,32 @@ if (isset($_SESSION['success_msg'])) {
     unset($_SESSION['success_msg']);
 }
 ?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="fonts.css">
+    <title>Log In</title>
+</head>
+<body>
+    <div class="container">
+        <div class="img-container">
+            <h1>Thoughtful Corner</h1>
+        </div>
+        <form action="signup.php" method="post" class="form-container">
+            <h2>Sign Up</h2>
+            <input class="text" type="text" name="name" id="name" placeholder="Name" required>
+            <input class="text" type="email" name="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+            <input class="text" type="password" name="pass" id="pass" placeholder="Password" required>
+            <input class="text" type="password" name="repass" id="repass" placeholder="Confirm Password" required>
+            <input class="submit" type="submit" value="Sign Up" name="signup">
+            <p>Already a user? <a href="login.php">Log in</a></p>
+        </form>
+    </div>
+</body>
+</html>
+

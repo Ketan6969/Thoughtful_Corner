@@ -2,6 +2,51 @@
 session_start();
 ?>
 
+<?php
+
+include("conn.php");
+include("functions.php");
+
+
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+    $name = $_POST["name"];
+    $email = test_input($_POST["email"]);
+    $pass = $_POST["pass"];
+    $repass = $_POST["repass"];
+    $sql = "INSERT INTO admin_mst (a_name,a_email,a_pass) VALUES ('$name' , '$email' , '$pass')";
+    if($name == null || $email == null || $pass == null || $repass == null)
+    {
+        echo '<script> alert("Please fill all the details!") </script>';
+    }
+        elseif(!filter_var($email, FILTER_VALIDATE_EMAIL))
+    {
+        echo '<script>alert("Invalid Email Format")</script>';
+    }
+    elseif(!checkPasswordStrength($pass)){
+        echo '<script>alert("Password should have at least 1 special character,uppercase,lowercase,numbers and minimum 8 chars!")</script>';
+    }
+    elseif($pass != $repass)
+    {   
+        echo '<script>alert("Passwords Do not match!")</script>';
+    }
+    else{
+        mysqli_query($conn,$sql);
+        echo '<script>alert("")</script>';
+        mysqli_close($conn);
+        $_SESSION['success_msg'] = "signup successful";
+        header("location:" . $_SERVER['REQUEST_URI']);
+        exit();
+    }
+}
+
+if (isset($_SESSION['success_msg'])) {
+    echo '<script>alert("' . $_SESSION["success_msg"] . '")</script>';
+
+    unset($_SESSION['success_msg']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,48 +85,4 @@ session_start();
 </body>
 </html>
 
-<?php
-
-include("conn.php");
-include("functions.php");
-
-
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    $name = $_POST["name"];
-    $email = test_input($_POST["email"]);
-    $pass = $_POST["pass"];
-    $repass = $_POST["repass"];
-    $sql = "INSERT INTO admin_mst (a_name,a_email,a_pass) VALUES ('$name' , '$email' , '$pass')";
-    if($name == null || $email == null || $pass == null || $repass == null)
-    {
-        echo '<script> alert("Please fill all the details!") </script>';
-    }
-    elseif(!filter_var($email, FILTER_VALIDATE_EMAIL))
-    {
-       echo '<script>alert("Invalid Email Format")</script>';
-    }
-    elseif(!checkPasswordStrength($pass)){
-        echo '<script>alert("Password should have at least 1 special character,uppercase,lowercase,numbers and minimum 8 chars!")</script>';
-    }
-    elseif($pass != $repass)
-    {   
-        echo '<script>alert("Passwords Do not match!")</script>';
-    }
-    else{
-        mysqli_query($conn,$sql);
-        echo '<script>alert("")</script>';
-        mysqli_close($conn);
-        $_SESSION['success_msg'] = "signup successful";
-        header("location:" . $_SERVER['REQUEST_URI']);
-        exit();
-    }
-}
-
-if (isset($_SESSION['success_msg'])) {
-    echo '<script>alert("' . $_SESSION["success_msg"] . '")</script>';
-
-    unset($_SESSION['success_msg']);
-}
-?>
 
