@@ -6,6 +6,7 @@ pipeline{
         DOCKER_IMAGE="ketan2004/thcorner"
         SERVER_IP="34.234.138.153"
         SERVER_USER="ubuntu"
+        DOCKER_COMPOSE_PATH = '/usr/bin/docker-compose'
     }
     stages{
         stage('Checkout'){
@@ -49,13 +50,11 @@ pipeline{
                     pwd
                     withCredentials([sshUserPrivateKey(credentialsId: "aws-creds", keyFileVariable: 'SSH_KEY')]) {
                         sh '''
-                            pwd
-                            ls
                             ssh -i $SSH_KEY -o strictHostKeyChecking=no ${SERVER_USER}@${SERVER_IP} "
                                 docker pull ${DOCKER_IMAGE}:latest
-                                docker-compose down || true 
+                                $DOCKER_COMPOSE_PATH docker-compose down || true 
                                 docker rm thcorner-container || true
-                                docker-compose up -d
+                                $DOCKER_COMPOSE_PATH docker-compose up -d
                             "
                         '''
                     }
