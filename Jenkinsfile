@@ -9,6 +9,7 @@ pipeline{
         DOCKER_REGISTRY='docker.io'
         DOCKER_IMAGE="ketan2004/thcorner"
         SERVER_IP="34.234.138.153"
+        AGENT_ID="34.234.138.153"
         SERVER_USER="ubuntu"
         // DOCKER_COMPOSE_PATH = '/usr/bin/docker-compose'
     }
@@ -54,7 +55,7 @@ pipeline{
                     echo "Deploying the application....."
                     pwd                    
                         sh '''
-                            ssh ${SERVER_IP} "
+                            ssh -o StrictHostKeyChecking=no ${SERVER_USER}@${AGENT_IP} "
                                 docker pull ${DOCKER_IMAGE}:latest
                                 pwd
                                 ls
