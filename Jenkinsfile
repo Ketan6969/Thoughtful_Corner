@@ -61,9 +61,9 @@ pipeline{
                                 pwd
                                 ls
                                 echo "current dir"
-                                docker-compose down || true 
+                                docker compose down || true 
                                 docker rm thcorner-container || true
-                                docker-compose up -d
+                                docker compose up -d
                             "
                         '''
                     }
