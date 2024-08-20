@@ -54,7 +54,7 @@ pipeline{
                     echo "Deploying the application....."
                     pwd                    
                         sh '''
-                            ssh -i ${SERVER_USER}@${SERVER_IP} "
+                            ssh ${SERVER_IP} "
                                 docker pull ${DOCKER_IMAGE}:latest
                                 pwd
                                 ls
