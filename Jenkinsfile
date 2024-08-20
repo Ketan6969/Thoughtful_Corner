@@ -54,9 +54,9 @@ pipeline{
                 script{
                     echo "Deploying the application....."
                     pwd                    
-                    withCredentials([usernamePassword(credentialsId: 'node-creds', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]){
+                    withCredentials([sshUserPrivateKey(credentialsId: 'node-creds', keyFileVariable: 'SSH_KEY')]){
                         sh '''
-                            ssh -o StrictHostKeyChecking=no ${SERVER_USER}@${AGENT_IP} "
+                            ssh -i $SSH_KEY -o StrictHostKeyChecking=no ${SERVER_USER}@${AGENT_IP} "
                                 docker pull ${DOCKER_IMAGE}:latest
                                 pwd
                                 ls
