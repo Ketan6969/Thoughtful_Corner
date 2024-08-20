@@ -1,0 +1,60 @@
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #e7f2fd;
+    
+}
+
+.tab {
+    margin: 20px;
+}
+
+.table-container {
+    max-width: 100%;
+    max-height: 70vh;
+    overflow: auto;
+    border: white 3px solid;
+    margin-top: 10%;
+    border-radius: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-y: hidden;
+    padding-top: 40px;
+    border-radius: 8px;
+}
+
+th, td {
+    border: 1px solid #fff;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: wheat;
+
+}
+td{
+    background-color: #212529;
+    color: white;
+}
+
+.delete-btn {
+    width: 10%;
+    border-radius: 8px;
+    border-color: #fff;
+    border-width: 2px;
+    height: auto;
+    background-color: whitesmoke;
+}
+
+.delete-btn:hover{
+    background-color: wheat;
+    color: black;
+    
+    }
+

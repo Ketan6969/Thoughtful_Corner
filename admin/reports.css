@@ -1,0 +1,96 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap'); */
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+  }
+  
+  .info-card{
+    
+    margin: 10px;
+    padding: 20px;
+    border-color: #fff;
+    background-color: #a1b0bf;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .more-info{
+    position: absolute;
+    display: none;
+    margin: 10px;
+    width: 100%;
+    padding: 20px;
+    border-color: #fff;
+    background-color: #acbed0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease; /* Add transition property */
+  }
+  
+  .show-more-info{ 
+  position: relative;
+  display: block;
+  opacity: 1;
+  margin-bottom: 10px; /* Show the element with transition */
+  } 
+  
+  .info-heading{
+    padding:5px;
+  }
+  .more-infocard{
+    border: 1px solid black;
+    margin: 4px;
+    border-radius: 8px;
+  }
+
+  .user-info{
+    height: 80%;
+    position: fixed;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin-top: 15%;
+    margin-bottom: 8%;
+    width: 80%;
+  }
+
+  .info-cardbtn{
+    background-color: transparent;
+    border: none;
+  }
+
+  i:hover{
+    border: 1px black solid; 
+}
+
+.rotate{
+    transform: rotate(180deg);
+    transition: transform 0.3s ease; /* Optional: Add transition effect */
+}
+
+label, .info-heading{
+  font-weight: 300;
+}
+
+.info-content{
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+.Heading{
+  z-index: 1000;
+  margin-bottom: 45%;
+  background-color: #a1b0bf;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 5px;
+}
