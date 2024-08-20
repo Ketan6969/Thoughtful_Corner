@@ -3,7 +3,7 @@
   services:
     web:
       container_name: 'thcorner-container'
-      image: ketan2004/thcorner
+      image: ketan2004/thcorner:latest
       depends_on:
         - db
       ports:
