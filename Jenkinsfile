@@ -1,15 +1,10 @@
 pipeline{
-    agent {
-        node{
-            label 'thcorner-node'
-        }
-    }
+    agent any
     environment{
         DOCKER_CREDENTIAL_ID="docker-hub-creds"
         DOCKER_REGISTRY='docker.io'
         DOCKER_IMAGE="ketan2004/thcorner"
         SERVER_IP="34.234.138.153"
-        AGENT_IP="34.234.138.153"
         SERVER_USER="ubuntu"
         // DOCKER_COMPOSE_PATH = '/usr/bin/docker-compose'
     }
@@ -39,7 +34,6 @@ pipeline{
                     echo "Executing the docker push stage!!!"
                     withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIAL_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh '''
-                    
                             echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
                             docker push ${DOCKER_IMAGE}:latest
                         '''
@@ -53,21 +47,21 @@ pipeline{
             steps{
                 script{
                     echo "Deploying the application....."
-                    pwd                    
-                    withCredentials([sshUserPrivateKey(credentialsId: 'node-creds', keyFileVariable: 'SSH_KEY')]){
+                    pwd
+                    
                         sh '''
-                            ssh -i $SSH_KEY -o StrictHostKeyChecking=no ${SERVER_USER}@${AGENT_IP} "
+                            ssh -i ${SERVER_USER}@${SERVER_IP} "
                                 docker pull ${DOCKER_IMAGE}:latest
                                 pwd
                                 ls
                                 echo "current dir"
-                                docker compose down || true 
+                                docker-compose down || true 
                                 docker rm thcorner-container || true
-                                docker compose up -d
-                                docker rm $(docker images -qa)
+                                docker-compose up -d
+                                                                
                             "
                         '''
-                    }
+                    
                     echo "Deployment Complete!!"
                 }
             }
