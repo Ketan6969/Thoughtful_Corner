@@ -38,6 +38,7 @@ pipeline{
                     echo "Executing the docker push stage!!!"
                     withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIAL_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh '''
+                            echo $PASSWORD
                             echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
                             docker push ${DOCKER_IMAGE}:latest
                         '''
