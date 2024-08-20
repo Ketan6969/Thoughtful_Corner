@@ -58,7 +58,7 @@ pipeline{
                                 docker-compose down || true 
                                 docker rm thcorner-container || true
                                 docker-compose up -d
-                                                                
+                                bash delete_od_images.sh                                
                             "
                         '''
                     
