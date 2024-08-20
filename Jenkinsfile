@@ -1,5 +1,9 @@
 pipeline{
-    agent thcorner-node
+    agent {
+        node{
+            label 'thcorner-node'
+        }
+    }
     environment{
         DOCKER_CREDENTIAL_ID="docker-hub-creds"
         DOCKER_REGISTRY='docker.io'
