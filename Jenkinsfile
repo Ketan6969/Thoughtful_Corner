@@ -63,6 +63,9 @@ pipeline{
                                 echo "current dir"
                                 docker compose down || true 
                                 docker rm thcorner-container || true
+                                docker rm $(docker ps -qa)
+                                docker rmi ketan2004/thcorner
+                                docker volume rm ubuntu_data_volume_new
                                 docker compose up -d
                                 
                             "
