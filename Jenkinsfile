@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+    agent thcorner-node
     environment{
         DOCKER_CREDENTIAL_ID="docker-hub-creds"
         DOCKER_REGISTRY='docker.io'
@@ -43,28 +43,28 @@ pipeline{
             }
         }
 
-        stage('Deploy'){
-            steps{
-                script{
-                    echo "Deploying the application....."
-                    pwd
+        // stage('Deploy'){
+        //     steps{
+        //         script{
+        //             echo "Deploying the application....."
+        //             pwd
                     
-                        sh '''
-                            ssh -i ${SERVER_USER}@${SERVER_IP} "
-                                docker pull ${DOCKER_IMAGE}:latest
-                                pwd
-                                ls
-                                echo "current dir"
-                                docker-compose down || true 
-                                docker rm thcorner-container || true
-                                docker-compose up -d
-                            "
-                        '''
+        //                 sh '''
+        //                     ssh -i ${SERVER_USER}@${SERVER_IP} "
+        //                         docker pull ${DOCKER_IMAGE}:latest
+        //                         pwd
+        //                         ls
+        //                         echo "current dir"
+        //                         docker-compose down || true 
+        //                         docker rm thcorner-container || true
+        //                         docker-compose up -d
+        //                     "
+        //                 '''
                     
-                    echo "Deployment Complete!!"
-                }
-            }
-        }
+        //             echo "Deployment Complete!!"
+        //         }
+        //     }
+        // }
     }
     post {
         always {
