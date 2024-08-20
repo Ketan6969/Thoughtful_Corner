@@ -54,6 +54,7 @@ pipeline{
                 script{
                     echo "Deploying the application....."
                     pwd                    
+                    withCredentials([usernamePassword(credentialsId: 'node-creds', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]){
                         sh '''
                             ssh -o StrictHostKeyChecking=no ${SERVER_USER}@${AGENT_IP} "
                                 docker pull ${DOCKER_IMAGE}:latest
@@ -65,7 +66,7 @@ pipeline{
                                 docker-compose up -d
                             "
                         '''
-                    
+                    }
                     echo "Deployment Complete!!"
                 }
             }
