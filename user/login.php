@@ -6,8 +6,8 @@
 <?php
 include("conn.php");
 // Turn off display of warnings
-error_reporting(E_ERROR | E_PARSE);
-ini_set('display_errors', 'Off');
+// error_reporting(E_ERROR | E_PARSE);
+// ini_set('display_errors', 'Off');
 
 
 
