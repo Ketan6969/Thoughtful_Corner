@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thcorner-deployment
+  labels: 
+    thcorner: Deployment 
+spec: 
+  replicas: 2
+  selector:
+    matchLabels:
+      thcorner: web 
+  template:
+    metadata:
+      labels:
+        thcorner: web 
+    spec:
+      containers:
+      - name: thcorner-web
+        image: ketan2004/thcorner
+        ports: 
+        - containerPort: 8080
+      - name: thcorner-db
+        image: mysql:latest
+        ports:
+        - containerPort: 3306
+        env: 
+        - name: MYSQL_ROOT_PASSWORD
+          value: root
+
+      - name: thcorner-db-admin
+        image: phpmyadmin:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: root
+        - name: PMA_HOST
+          value: thcorner-db
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: thcorner-service
+spec:
+  selector:
+    thcorner: Deployment
+  type: NodePort
+  ports: 
+    - name: thcorner-web-port
+      protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30000
+    - name: thcorner-db-port
+      port: 3306
+      targetPort: 3306
+      nodePort: 30001
+    - name: thcorner-admin-port
+      port: 80
+      targetPort: 80
+      nodePort: 30002
