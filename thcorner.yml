@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: thcorner-pod
+  labels:
+    app: thcorner
+spec:
+  containers:
+    - name: thcorner
+      image: ketan2004/thcorner
+      ports:
+        - containerPort: 80
+          name: thcorner-port
+
+---
+# Create a Persistent volume and a volume claim for the storage persistence 
+# Create a php my admin container for administration
+--- 
+
+apiVersion: v1
+kind: Service
+metadata: 
+  name: thcorner-service
+
+spec:
+  selector:
+    app: thcorner
+  type: NodePort
+  ports:
+    - name: thcorner-port
+      protocol: TCP
+      port: 80
+      targetPort: thcorner-port 
